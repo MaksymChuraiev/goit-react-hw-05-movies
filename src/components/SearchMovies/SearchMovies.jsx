@@ -10,7 +10,7 @@ export const SearchMovies = () => {
     setSearchName(data.name);
     resetField('name');
     if (data.name === '') {
-      console.log('eeeeeeeeee');
+      console.log(searchName);
     }
   };
 
