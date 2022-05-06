@@ -32,4 +32,7 @@ export const Headerlink = styled(NavLink)`
   &:hover {
     opacity: 0.5;
   }
+  &.active {
+    opacity: 0.5;
+  }
 `;

@@ -1,23 +1,23 @@
-import { useState } from 'react';
+import { Container } from 'components/Header/Header.styled';
 import { useForm } from 'react-hook-form';
-import { Form, FormButton, FormInput } from './SearchMovies.styled';
+import { Form, FormButton, FormInput, SearchSvg } from './SearchMovies.styled';
 
-export const SearchMovies = () => {
-  const [searchName, setSearchName] = useState('');
-
+export const SearchMovies = ({ onSub }) => {
   const { register, handleSubmit, resetField } = useForm();
+
   const onSubmit = data => {
-    setSearchName(data.name);
+    onSub(data.name);
     resetField('name');
-    if (data.name === '') {
-      console.log(searchName);
-    }
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormInput {...register('name')} />
-      <FormButton type="submit">aaa</FormButton>
-    </Form>
+    <Container>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormInput {...register('name')} />
+        <FormButton type="submit">
+          <SearchSvg />
+        </FormButton>
+      </Form>
+    </Container>
   );
 };

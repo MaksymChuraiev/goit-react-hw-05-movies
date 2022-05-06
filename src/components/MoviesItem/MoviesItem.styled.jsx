@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const FilmItems = styled.li`
   margin-left: 20px;
@@ -12,7 +13,7 @@ export const FilmItems = styled.li`
   padding-bottom: 10px;
 `;
 export const FilmImage = styled.img`
-  width: 380px;
+  width: 400px;
 `;
 export const FilmTitle = styled.p`
   text-align: center;
@@ -20,4 +21,8 @@ export const FilmTitle = styled.p`
   font-weight: 600;
   margin-top: 5px;
   color: #3f51b5;
+`;
+
+export const FilmLink = styled(Link)`
+  text-decoration: none;
 `;
