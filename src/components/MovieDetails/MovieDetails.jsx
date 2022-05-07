@@ -1,4 +1,5 @@
 import { Container } from 'components/Header/Header.styled';
+import { useLocation } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
 import {
   MovieWrapp,
@@ -17,6 +18,9 @@ import {
 } from './MovieDetails.styled';
 
 export const MovieDetails = ({ details }) => {
+  const location = useLocation();
+
+  console.log(location);
   const { title, genres, overview, image, score } = details;
 
   return (

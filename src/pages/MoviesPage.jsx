@@ -8,23 +8,23 @@ export const MoviesPage = () => {
   const [searchName, setSearchName] = useState('');
   const [searchMovies, setSearchMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
 
   const onSearchName = name => {
     setSearchName(name);
-    // решить с возвратом
-    setSearchParams({ query: name });
+    setSearchParams({ query: searchName });
   };
 
   useEffect(() => {
     if (searchName === '') {
       return;
     }
+
     fetchSearchMovies(searchName).then(res => setSearchMovies(res));
   }, [searchName]);
-
   console.log(searchName);
-  console.log(searchMovies);
-  console.log(searchParams);
+  console.log(searchQuery);
+
   return (
     <>
       <SearchMovies onSub={onSearchName} />
