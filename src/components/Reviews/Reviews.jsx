@@ -11,14 +11,13 @@ import {
 } from './Reviews.styled';
 import { Container } from 'components/Header/Header.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
     fetchMovieReviews(movieId).then(res => setMovieReviews(res));
   }, [movieId]);
-  console.log(movieReviews);
 
   return (
     <>
@@ -41,3 +40,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

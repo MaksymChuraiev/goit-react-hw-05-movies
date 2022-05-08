@@ -22,11 +22,19 @@ export const CastImage = styled.img`
   margin: 0 auto;
   width: 100%;
 `;
-export const CastTitle = styled.p`
+
+export const CastNameTitle = styled.p`
   color: #3f51b5;
   font-size: 20px;
   margin-top: 10px;
+  text-align: center;
 `;
+
+export const CastCharacterTitle = styled.p`
+  text-align: center;
+  margin-top: 10px;
+`;
+
 export const CastNoImage = styled.img`
   width: 100%;
 `;

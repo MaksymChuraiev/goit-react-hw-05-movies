@@ -3,17 +3,6 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const KEY = '092a845a33f61eebb0542bc73fc3415f';
 
-// export const fetchGetTrending = () => {
-//   return axios.get(`trending/movie/day?api_key=${KEY}`).then(res => res.data);
-// };
-
-// export const mapper = films =>
-//   films.map(({ poster_path, id, title }) => ({
-//     img: poster_path,
-//     id,
-//     title,
-//   }));
-
 export const fetchGetTrending = async () => {
   const trendingMovies = await axios.get(`trending/movie/day?api_key=${KEY}`);
   return trendingMovies.data.results.map(({ poster_path, id, title }) => ({
@@ -33,12 +22,6 @@ export const fetchSearchMovies = async query => {
     title,
   }));
 };
-
-// export const fetchDetailsMovies = id => {
-//   return axios.get(`movie/${id}?api_key=${KEY}`).then(({ data }) => {
-//     const movieDetails = { genres: data.genres };
-//   });
-// };
 
 export const fetchDetailsMovies = async id => {
   const moviesDetails = await axios.get(`movie/${id}?api_key=${KEY}`);

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { fetchDetailsMovies } from '../services/api.js';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails.jsx';
 
-export const MoviesDetailsPage = () => {
+const MoviesDetailsPage = () => {
   const [details, setDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -18,3 +18,5 @@ export const MoviesDetailsPage = () => {
     </>
   );
 };
+
+export default MoviesDetailsPage;

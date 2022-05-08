@@ -4,26 +4,28 @@ import { SearchMovies } from 'components/SearchMovies/SearchMovies';
 import { fetchSearchMovies } from 'services/api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const MoviesPage = () => {
-  const [searchName, setSearchName] = useState('');
+const MoviesPage = () => {
+  // const [searchName, setSearchName] = useState('');
   const [searchMovies, setSearchMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query');
 
   const onSearchName = name => {
-    setSearchName(name);
-    setSearchParams({ query: searchName });
+    // setSearchName(name);
+    setSearchParams({ query: name });
   };
 
   useEffect(() => {
-    if (searchName === '') {
+    if (searchQuery === null) {
       return;
     }
 
-    fetchSearchMovies(searchName).then(res => setSearchMovies(res));
-  }, [searchName]);
-  console.log(searchName);
-  console.log(searchQuery);
+    if (searchQuery === '') {
+      return;
+    }
+
+    fetchSearchMovies(searchQuery).then(res => setSearchMovies(res));
+  }, [searchQuery]);
 
   return (
     <>
@@ -32,3 +34,5 @@ export const MoviesPage = () => {
     </>
   );
 };
+
+export default MoviesPage;

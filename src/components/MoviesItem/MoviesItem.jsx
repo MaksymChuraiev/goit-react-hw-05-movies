@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { FilmItems, FilmImage, FilmTitle, FilmLink } from './MoviesItem.styled';
+import PropTypes from 'prop-types';
 
 export const MoviesItem = ({ id, img, title }) => {
   const location = useLocation();
@@ -12,4 +13,10 @@ export const MoviesItem = ({ id, img, title }) => {
       </FilmLink>
     </FilmItems>
   );
+};
+
+MoviesItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };

@@ -1,6 +1,8 @@
 import { Container } from 'components/Header/Header.styled';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import * as Scroll from 'react-scroll';
+import PropTypes from 'prop-types';
 import {
   MovieWrapp,
   MovieImage,
@@ -18,10 +20,19 @@ import {
 } from './MovieDetails.styled';
 
 export const MovieDetails = ({ details }) => {
+  const [backLocation, setBackLocation] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  console.log(location);
+  useEffect(() => {
+    setBackLocation(location?.state?.from ?? '/');
+  }, []);
+
   const { title, genres, overview, image, score } = details;
+
+  const onGoBack = () => {
+    navigate(backLocation);
+  };
 
   return (
     <Container>
@@ -38,7 +49,7 @@ export const MovieDetails = ({ details }) => {
               <MovieText key={genre.id}>{genre.name}</MovieText>
             ))}
           </MovieGenresWrapp>
-          <GoBackButton>
+          <GoBackButton type="button" onClick={onGoBack}>
             <GoBackIcon />
             Go back
           </GoBackButton>
@@ -63,4 +74,19 @@ export const MovieDetails = ({ details }) => {
       </MovieMoreInfo>
     </Container>
   );
+};
+
+MovieDetails.propTypes = {
+  details: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
 };

@@ -3,7 +3,8 @@ import {
   CastList,
   CastItem,
   CastImage,
-  CastTitle,
+  CastNameTitle,
+  CastCharacterTitle,
   CastNoImage,
 } from './Cast.styled';
 import { fetchMovieCast } from 'services/api';
@@ -11,7 +12,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from 'components/Header/Header.styled';
 import imageno from '../../image/noimage.jpg';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState(null);
   useEffect(() => {
@@ -34,8 +35,8 @@ export const Cast = () => {
                   <CastNoImage src={imageno} />
                 )}
 
-                <CastTitle>{name}</CastTitle>
-                <CastTitle>{character}</CastTitle>
+                <CastNameTitle>{name}</CastNameTitle>
+                <CastCharacterTitle>{character}</CastCharacterTitle>
               </CastItem>
             ))}
           </CastList>
@@ -44,3 +45,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

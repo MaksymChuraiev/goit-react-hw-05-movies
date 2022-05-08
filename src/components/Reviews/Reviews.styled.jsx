@@ -27,4 +27,10 @@ export const ReviewsText = styled.p`
   margin-left: 10px;
 `;
 
-export const ReviewsNoText = styled.p``;
+export const ReviewsNoText = styled.p`
+  color: #3f51b5;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px;
+  text-align: center;
+`;
