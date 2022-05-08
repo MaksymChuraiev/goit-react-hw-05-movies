@@ -25,8 +25,10 @@ export const MovieDetails = ({ details }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setBackLocation(location?.state?.from ?? '/');
-  }, []);
+    if (backLocation === null) {
+      setBackLocation(location?.state?.from ?? '/');
+    }
+  }, [backLocation, location?.state?.from]);
 
   const { title, genres, overview, image, score } = details;
 

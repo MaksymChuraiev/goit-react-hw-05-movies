@@ -20,7 +20,7 @@ const App = () => {
       <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MoviesDetailsPage />}>
             <Route path="cast" element={<Cast />} />
